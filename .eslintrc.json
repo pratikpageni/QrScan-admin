@@ -1,7 +1,7 @@
 {
-  "root":true,
+  "root": true,
   "extends": "next/core-web-vitals",
-  "overrides":[
+  "overrides": [
     {
       "files": ["*.ts", "*.tsx"],
       "extends": ["plugin:@nx/typescript"],
