@@ -3,14 +3,17 @@ import React from 'react';
 import { FaRegBell } from 'react-icons/fa';
 import { HiOutlineChatBubbleOvalLeftEllipsis } from 'react-icons/hi2';
 
-const Navbar = () => {
+interface NavbarInterface {
+  NavbarTitle: string;
+  NavDescription: string;
+}
+
+const Navbar = ({ NavbarTitle, NavDescription }: NavbarInterface) => {
   return (
     <div className='flex w-full justify-between px-8 py-8 shadow-sm '>
       <div className=''>
-        <h1 className='font-bold text-2xl'>Dashboard</h1>
-        <p className='text-[#B1B1B1] font-normal text-xl '>
-          Welcome to Restro Admin, Pratik !
-        </p>
+        <h1 className='font-bold text-2xl'>{NavbarTitle}</h1>
+        <p className='text-[#B1B1B1] font-normal text-xl '>{NavDescription}</p>
       </div>
       <div className=' flex justify-end gap-x-5'>
         <button className='w-[40px] h-[40px] bg-gray-100 rounded-full flex justify-center items-center hover:bg-gray-200'>

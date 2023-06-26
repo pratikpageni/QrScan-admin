@@ -18,7 +18,7 @@ const navbar: NavbarInterface[] = [
   },
   {
     title: 'Orders',
-    link: '/',
+    link: '/orders',
     logo: <GiNotebook size={23} />,
   },
   {

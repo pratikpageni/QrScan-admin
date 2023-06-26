@@ -6,9 +6,16 @@ import React from 'react';
 interface LayoutProps {
   title?: string;
   children: React.ReactNode;
+  NavbarTitle: string;
+  NavDescription: string;
 }
 
-const MainLayout = ({ title, children }: LayoutProps) => {
+const MainLayout = ({
+  title,
+  children,
+  NavDescription,
+  NavbarTitle,
+}: LayoutProps) => {
   return (
     <>
       <Head>
@@ -27,8 +34,8 @@ const MainLayout = ({ title, children }: LayoutProps) => {
         <div className='flex '>
           <Sidebar />
           <div className='w-full'>
-            <Navbar />
-            <div className='px-8 p-5 bg-gray-100'>{children}</div>
+            <Navbar NavDescription={NavDescription} NavbarTitle={NavbarTitle} />
+            <div className='px-8 p-5 bg-gray-100 min-h-screen'>{children}</div>
           </div>
         </div>
       </main>

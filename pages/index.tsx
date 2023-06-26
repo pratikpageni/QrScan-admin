@@ -8,7 +8,10 @@ import ActivetableCard from '@/components/dashboard/ActivetableCard';
 export default function Home() {
   return (
     <div>
-      <MainLayout>
+      <MainLayout
+        NavbarTitle='Dashboard'
+        NavDescription='Welcome to Restro Admin, Pratik !'
+      >
         <Dashboard />
       </MainLayout>
     </div>
