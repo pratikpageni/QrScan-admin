@@ -3,3 +3,6 @@
 @tailwind utilities;
 
 /* plain css class here */
+.a.active{
+    background: #00a9d3 ;
+}
