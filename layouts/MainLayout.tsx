@@ -35,7 +35,7 @@ const MainLayout = ({
           <Sidebar />
           <div className='w-full'>
             <Navbar NavDescription={NavDescription} NavbarTitle={NavbarTitle} />
-            <div className='px-8 p-5 bg-gray-100 min-h-screen'>{children}</div>
+            <div className='px-8 py-8 bg-gray-100 min-h-screen'>{children}</div>
           </div>
         </div>
       </main>

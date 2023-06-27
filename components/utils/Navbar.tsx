@@ -4,8 +4,8 @@ import { FaRegBell } from 'react-icons/fa';
 import { HiOutlineChatBubbleOvalLeftEllipsis } from 'react-icons/hi2';
 
 interface NavbarInterface {
-  NavbarTitle: string;
-  NavDescription: string;
+  NavbarTitle?: string;
+  NavDescription?: string;
 }
 
 const Navbar = ({ NavbarTitle, NavDescription }: NavbarInterface) => {
