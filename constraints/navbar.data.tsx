@@ -23,22 +23,22 @@ const navbar: NavbarInterface[] = [
   },
   {
     title: 'Billing',
-    link: '/',
+    link: '/billing',
     logo: <MdAttachMoney size={24} />,
   },
   {
     title: 'Menu',
-    link: '/',
+    link: '/menu',
     logo: <SlNotebook size={22} />,
   },
   {
     title: 'Table',
-    link: '/',
+    link: '/aew',
     logo: <GiSofa size={23} />,
   },
   {
     title: 'Setup',
-    link: '/',
+    link: '/e',
     logo: <AiFillSetting size={22} />,
   },
 ];

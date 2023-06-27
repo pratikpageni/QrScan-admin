@@ -31,12 +31,10 @@ const MainLayout = ({
         />
       </Head>
       <main className='font-saira'>
-        <div className='flex '>
-          <Sidebar />
-          <div className='w-full'>
-            <Navbar NavDescription={NavDescription} NavbarTitle={NavbarTitle} />
-            <div className='px-8 py-8 bg-gray-100 min-h-screen'>{children}</div>
-          </div>
+        <Sidebar />
+        <Navbar NavDescription={NavDescription} NavbarTitle={NavbarTitle} />
+        <div className='pl-[18rem] pt-[9rem] px-8 py-80 pt-16 bg-gray-100 min-h-screen '>
+          {children}
         </div>
       </main>
     </>

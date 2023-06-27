@@ -7,20 +7,18 @@ import ActivetableCard from '@/components/dashboard/ActivetableCard';
 
 export default function Home() {
   return (
-    <div>
-      <MainLayout
-        NavbarTitle='Dashboard'
-        NavDescription='Welcome to Restro Admin, Pratik !'
-      >
-        <Dashboard />
-      </MainLayout>
-    </div>
+    <MainLayout
+      NavbarTitle='Dashboard'
+      NavDescription='Welcome to Restro Admin, Pratik !'
+    >
+      <Dashboard />
+    </MainLayout>
   );
 }
 
 const Dashboard = () => {
   return (
-    <div>
+    <div className=''>
       <div>
         <div className='grid grid-cols-2 gap-x-10'>
           <Infocard
