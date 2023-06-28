@@ -14,11 +14,15 @@ const RecentOrderCard = () => {
           {[0, 0, 0].map((data, index) => {
             const [showdone, setdoneshow] = useState(false);
             const [showcross, setcrossshow] = useState(false);
+            const [showcook, setcookshow] = useState(false);
             const showdoneIcon = () => {
               setdoneshow(true);
             };
             const showcrossIcon = () => {
               setcrossshow(true);
+            };
+            const showcookIcon = () => {
+              setcookshow(true);
             };
             return (
               <div className='flex gap-x-3 mt-3  '>
@@ -40,6 +44,20 @@ const RecentOrderCard = () => {
                   <div className='flex mt-1 justify-between items-center'>
                     <h1 className='font-bold'>Qty:1</h1>
                     <div className='flex gap-x-2'>
+                      {showcross || showdone ? null : (
+                        <button onClick={showcookIcon} className='-mt-1'>
+                          {!showcook ? (
+                            <img src='/img/cook.jpg' alt='' className='h-11' />
+                          ) : (
+                            <img
+                              src='/img/anicook.gif'
+                              alt=''
+                              className='h-11'
+                            />
+                          )}
+                        </button>
+                      )}
+
                       {showcross ? null : (
                         <button
                           onClick={showdoneIcon}
