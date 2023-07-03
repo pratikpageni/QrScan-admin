@@ -2,7 +2,6 @@ import navbar from '@/constraints/navbar.data';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 
 const Sidebar = () => {
   const router = useRouter();
@@ -16,7 +15,7 @@ const Sidebar = () => {
           return (
             <Link
               href={`${data.link}`}
-              className={`flex p-3 px-5 ${
+              className={`flex p-3  ${
                 router.asPath == data?.link
                   ? 'bg-brandcolor text-white'
                   : 'text-brandcolor'

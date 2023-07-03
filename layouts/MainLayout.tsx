@@ -1,5 +1,5 @@
-import Navbar from '@/components/utils/Navbar';
-import Sidebar from '@/components/utils/Sidebar';
+import Navbar from '@/layouts/Navbar';
+import Sidebar from '@/layouts/Sidebar';
 import Head from 'next/head';
 import React from 'react';
 
@@ -33,7 +33,7 @@ const MainLayout = ({
       <main className='font-saira'>
         <Sidebar />
         <Navbar NavDescription={NavDescription} NavbarTitle={NavbarTitle} />
-        <div className='pl-[18rem] pt-[9rem] px-8 py-80 pt-16 bg-gray-100 min-h-screen '>
+        <div className='pl-[18rem] pt-[7rem] px-8 py-80 bg-gray-100 min-h-screen '>
           {children}
         </div>
       </main>

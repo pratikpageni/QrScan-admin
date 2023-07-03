@@ -10,7 +10,7 @@ interface NavbarInterface {
 
 const Navbar = ({ NavbarTitle, NavDescription }: NavbarInterface) => {
   return (
-    <div className='flex  bg-white fixed   pl-[18rem] justify-between left-0 right-0 px-8 py-8 shadow-sm '>
+    <div className='flex  bg-white fixed   pl-[18rem] justify-between left-0 right-0 px-8 py-4 shadow-sm items-center '>
       <div className=''>
         <h1 className='font-bold text-2xl'>{NavbarTitle}</h1>
         <p className='text-[#B1B1B1] font-normal text-xl '>{NavDescription}</p>
