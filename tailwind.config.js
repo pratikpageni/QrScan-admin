@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -9,11 +10,11 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        saira: ["Saira", "sans-serif"],
+        saira: ['Saira', 'sans-serif'],
       },
       colors: {
-        brandcolor:"#00a9d3",
-        qr:"#ffffff"
+        brandcolor: '#00a9d3',
+        qr: '#ffffff',
       },
     },
   },

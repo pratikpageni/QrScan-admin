@@ -2,6 +2,7 @@ import MainLayout from '@/layouts/MainLayout';
 import React from 'react';
 import { Breadcrumb } from 'antd';
 import Link from 'next/link';
+import { BiSave } from 'react-icons/bi';
 
 const managebill = () => {
   return (
@@ -26,15 +27,18 @@ const managebill = () => {
         ]}
       />
       <div className='flex gap-x-6'>
-        <div className='w-1/2 bg-white rounded-lg text-center p-4 text-lg font-semibold'>
+        <div className=' order-2 bg-white rounded-lg text-center overflow-y-scroll h-[31rem] fixed right-4 p-4 text-lg font-semibold w-[31rem]'>
           Add Item
         </div>
-        <div className='w-[33rem] bg-white rounded-lg text-center p-4 text-lg font-semibold h-[31rem] fixed right-0 shadow-lg'>
+        <div className='w-[33rem] order-1 rounded-lg text-center p-4 text-lg font-semibold right-0 '>
           <h1 className=' border-dashed border-b pb-2'>Table 1</h1>
-          <div className='p-4 overflow-y-scroll h-[22rem] border-b'>
+          <div className='p-4  border-b'>
             {[0, 0, 0, 0, 0, 0, 0].map((data, index) => {
               return (
-                <div className='flex   w-full justify-between py-2 '>
+                <div
+                  key={index}
+                  className='flex   w-full justify-between py-2 '
+                >
                   <div className='flex gap-x-3 items-center'>
                     <img
                       src='/img/profile.jpg'
@@ -48,12 +52,37 @@ const managebill = () => {
                       <p className='text-sm -mt-1 text-left'>x1</p>
                     </div>
                   </div>
-                  <h5 className='text-brandcolor font-semibold text-right'>
+                  <h5 className='text-brandcolor font-semibold text-right text-base'>
                     Rs 500/-
                   </h5>
                 </div>
               );
             })}
+            <div className='flex gap-x-3 text-sm items-center'>
+              <input
+                type='text'
+                placeholder='Item Name'
+                className='w-full p-2 outline-none bg-gray-200 rounded-md'
+              />
+              <input
+                type='number'
+                placeholder='Qty'
+                className='w-[3rem] p-2  bg-gray-200 rounded-md'
+              />
+              <input
+                type='text'
+                placeholder='Rate'
+                className='w-[3.5rem] p-2 outline-none bg-gray-200 rounded-md'
+              />
+              <input
+                type='text'
+                placeholder='Price'
+                className='w-[3.5rem] p-2 outline-none bg-gray-200 rounded-md'
+              />
+              <button>
+                <BiSave color='green' size={25} />
+              </button>
+            </div>
           </div>
           <div className='flex p-2'>
             <div className='w-1/2'></div>
