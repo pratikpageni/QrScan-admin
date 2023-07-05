@@ -33,7 +33,7 @@ const MainLayout = ({
       <main className='font-saira'>
         <Sidebar />
         <Navbar NavDescription={NavDescription} NavbarTitle={NavbarTitle} />
-        <div className='pl-[18rem] pt-[7rem] px-8 py-80 bg-gray-50  '>
+        <div className='pl-[18rem] pt-[7rem] px-8 py-80 bg-gray-100  '>
           {children}
         </div>
       </main>
