@@ -33,7 +33,7 @@ const navbar: NavbarInterface[] = [
   },
   {
     title: 'Table',
-    link: '/aew',
+    link: '/table',
     logo: <GiSofa size={23} />,
   },
   {
