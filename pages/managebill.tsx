@@ -3,6 +3,7 @@ import React from 'react';
 import { Breadcrumb } from 'antd';
 import Link from 'next/link';
 import { BiSave } from 'react-icons/bi';
+import AddItemCard from '@/components/managebill/AddItemCard';
 
 const managebill = () => {
   return (
@@ -27,10 +28,17 @@ const managebill = () => {
         ]}
       />
       <div className='flex gap-x-6'>
-        <div className=' order-2 bg-white rounded-lg text-center overflow-y-scroll h-[31rem] fixed right-4 p-4 text-lg font-semibold w-[31rem]'>
-          Add Item
+        <div className=' order-2 bg-white rounded-lg  overflow-y-scroll h-[31rem] fixed right-4 p-4  w-[31rem]'>
+          <div className='font-semibold text-center text-lg '>
+            <p className='pb-2 border-b'>Add Item</p>
+          </div>
+          <div className='grid grid-cols-3 gap-2 p-4'>
+            {[0, 0, 0, 0].map((data, index) => {
+              return <AddItemCard />;
+            })}
+          </div>
         </div>
-        <div className='w-[33rem] order-1 rounded-lg text-center p-4 text-lg font-semibold right-0 shadow-lg'>
+        <div className='w-[33rem] order-1 rounded-lg text-center p-4 text-lg font-semibold right-0 '>
           <h1 className=' border-dashed border-b pb-2'>Table 1</h1>
           <div className='p-4  border-b'>
             {[0, 0, 0, 0, 0, 0, 0].map((data, index) => {
