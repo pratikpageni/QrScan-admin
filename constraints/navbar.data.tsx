@@ -38,7 +38,7 @@ const navbar: NavbarInterface[] = [
   },
   {
     title: 'Setup',
-    link: '/e',
+    link: '/setup',
     logo: <AiFillSetting size={22} />,
   },
 ];

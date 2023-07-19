@@ -4,6 +4,11 @@ import React, { useState } from 'react';
 import { TbLayoutGridAdd } from 'react-icons/tb';
 import tableData from '@/constraints/table.data';
 
+interface TableDataInterface {
+  name: string;
+  section: string;
+}
+
 const table = () => {
   // const onChange = (value: string) => {
   //   console.log(`selected ${value}`);
@@ -12,7 +17,28 @@ const table = () => {
   // const onSearch = (value: string) => {
   //   console.log('search:', value);
   // };
-  const [searchtext, setsearchtext] = useState();
+
+  const [name, setName] = useState('');
+  const [section, setSection] = useState('');
+  const [tableInputData, settableInputData] = useState<TableDataInterface[]>(
+    []
+  );
+
+  const handlesubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    settableInputData([...tableInputData, { name, section }]);
+    setName('');
+    setSection('');
+  };
+
+  const data: TableDataInterface[] = tableInputData.map(
+    ({ name, section }) => ({
+      name,
+      section,
+    })
+  );
+
+  // const [searchtext, setsearchtext] = useState();
   return (
     <MainLayout
       title='Table'
@@ -39,10 +65,13 @@ const table = () => {
             <Table
               className='bg-white rounded-lg'
               columns={tableData.tablecolumns}
-              dataSource={tableData.tabledataSource}
+              dataSource={data}
             ></Table>
           </div>
-          <div className='w-[30%] bg-white p-2 pt-4 rounded-lg  '>
+          <form
+            onSubmit={handlesubmit}
+            className='w-[30%] bg-white p-2 pt-4 rounded-lg  '
+          >
             <h1 className='font-bold text-center border-b border-dashed pb-4'>
               Add Table
             </h1>
@@ -53,36 +82,40 @@ const table = () => {
                   type='text'
                   placeholder='Name'
                   className='px-2 py-1 border w-full'
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                 />
               </div>
               <div>
                 <p>Section</p>
-                <Select
-                  className='w-full'
-                  showSearch
+                <input
+                  className='px-2 py-1 border w-full'
+                  // showSearch
                   placeholder='Select a Section'
-                  optionFilterProp='children'
-                  // onChange={onChange}
-                  // onSearch={onSearch}
-                  filterOption={(input, option) =>
-                    (option?.label ?? '')
-                      .toLowerCase()
-                      .includes(input.toLowerCase())
-                  }
-                  options={[
-                    {
-                      value: 'MoMo',
-                      label: 'Jack',
-                    },
-                    {
-                      value: 'lucy',
-                      label: 'Lucy',
-                    },
-                    {
-                      value: 'tom',
-                      label: 'Tom',
-                    },
-                  ]}
+                  value={section}
+                  onChange={(e) => setSection(e.target.value)}
+                  // optionFilterProp='children'
+                  // // onChange={onChange}
+                  // // onSearch={onSearch}
+                  // filterOption={(input, option) =>
+                  //   (option?.label ?? '')
+                  //     .toLowerCase()
+                  //     .includes(input.toLowerCase())
+                  // }
+                  // options={[
+                  //   {
+                  //     value: 'MoMo',
+                  //     label: 'Jack',
+                  //   },
+                  //   {
+                  //     value: 'lucy',
+                  //     label: 'Lucy',
+                  //   },
+                  //   {
+                  //     value: 'tom',
+                  //     label: 'Tom',
+                  //   },
+                  // ]}
                 />
               </div>
               <div className='flex justify-center'>
@@ -95,7 +128,7 @@ const table = () => {
                 </button>
               </div>
             </div>
-          </div>
+          </form>
         </div>
       </>
     </MainLayout>
