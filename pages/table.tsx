@@ -3,6 +3,7 @@ import { Input, Select, Space, Table, Tag, Tooltip } from 'antd';
 import React, { useState } from 'react';
 import { TbLayoutGridAdd } from 'react-icons/tb';
 import tableData from '@/constraints/table.data';
+import { useForm } from 'react-hook-form';
 
 interface TableDataInterface {
   name: string;
@@ -18,17 +19,23 @@ const table = () => {
   //   console.log('search:', value);
   // };
 
-  const [name, setName] = useState('');
-  const [section, setSection] = useState('');
+  const {
+    register,
+    reset,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<TableDataInterface>();
   const [tableInputData, settableInputData] = useState<TableDataInterface[]>(
     []
   );
 
-  const handlesubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    settableInputData([...tableInputData, { name, section }]);
-    setName('');
-    setSection('');
+  const submit = (value: TableDataInterface) => {
+    settableInputData((t) =>
+      [...t, value]?.map((m, i) => {
+        return { ...m, key: i };
+      })
+    );
+    reset();
   };
 
   const data: TableDataInterface[] = tableInputData.map(
@@ -65,11 +72,12 @@ const table = () => {
             <Table
               className='bg-white rounded-lg'
               columns={tableData.tablecolumns}
-              dataSource={data}
+              dataSource={tableData.tabledataSource}
             ></Table>
           </div>
           <form
-            onSubmit={handlesubmit}
+            // onSubmit={handlesubmit(handleSubmit)}
+            onSubmit={handleSubmit(submit)}
             className='w-[30%] bg-white p-2 pt-4 rounded-lg  '
           >
             <h1 className='font-bold text-center border-b border-dashed pb-4'>
@@ -79,44 +87,25 @@ const table = () => {
               <div>
                 <p>Name</p>
                 <input
+                  {...register('name', {
+                    required: { value: true, message: 'name is required' },
+                  })}
                   type='text'
                   placeholder='Name'
                   className='px-2 py-1 border w-full'
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
                 />
               </div>
               <div>
                 <p>Section</p>
                 <input
+                  {...register('section', {
+                    required: { value: true, message: 'section is required' },
+                  })}
                   className='px-2 py-1 border w-full'
                   // showSearch
                   placeholder='Select a Section'
-                  value={section}
-                  onChange={(e) => setSection(e.target.value)}
-                  // optionFilterProp='children'
-                  // // onChange={onChange}
-                  // // onSearch={onSearch}
-                  // filterOption={(input, option) =>
-                  //   (option?.label ?? '')
-                  //     .toLowerCase()
-                  //     .includes(input.toLowerCase())
-                  // }
-                  // options={[
-                  //   {
-                  //     value: 'MoMo',
-                  //     label: 'Jack',
-                  //   },
-                  //   {
-                  //     value: 'lucy',
-                  //     label: 'Lucy',
-                  //   },
-                  //   {
-                  //     value: 'tom',
-                  //     label: 'Tom',
-                  //   },
-                  // ]}
                 />
+                {errors?.name && errors.name.message}
               </div>
               <div className='flex justify-center'>
                 <button
