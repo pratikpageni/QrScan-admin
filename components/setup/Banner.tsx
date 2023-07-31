@@ -1,10 +1,24 @@
-import { Tooltip } from 'antd';
-import React from 'react';
+import { Modal, Tooltip } from 'antd';
+import React, { useState } from 'react';
 import { FiEdit2 } from 'react-icons/fi';
 import { FaLocationDot } from 'react-icons/fa6';
 import { IoMdContact } from 'react-icons/io';
+import ProfileForm from './ProfileForm';
 
 const Banner = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
   return (
     <div>
       <img
@@ -14,15 +28,15 @@ const Banner = () => {
       />
       <div className='mx-10 '>
         <div className='-mt-24 z-10 flex justify-between'>
-          <div className='flex'>
+          <div className='flex items-center '>
             <img
               src='/img/logo.png'
               alt='logo'
-              className='w-[11rem] h-[11rem] rounded-full bg-white border-white border-4 object-cover shadow-lg  '
+              className='z-10 -mr-6 w-[11rem] h-[11rem] rounded-full bg-white border-white border-4 object-cover shadow-lg  '
             />
-            <div className='ml-5'>
+            <div className=' bg-white p-2 px-10 shadow-lg rounded-r-[50px]'>
               <p
-                className='font-bold text-4xl text-white mt-14 '
+                className='font-bold text-4xl text-white'
                 style={{ WebkitTextStroke: '2px #000' }}
               >
                 Burger House And Crunchy Fried{' '}
@@ -40,13 +54,25 @@ const Banner = () => {
             </div>
           </div>
           <Tooltip title='Edit Your Profile'>
-            <button className='bg-brandcolor hover:opacity-70 text-white w-12 h-12 rounded-full flex justify-center items-center self-end'>
+            <button
+              onClick={showModal}
+              className='bg-brandcolor hover:opacity-70 text-white w-12 h-12 rounded-full flex justify-center items-center self-end'
+            >
               <FiEdit2 size={25} />
             </button>
           </Tooltip>
         </div>
         <div className='mt-3'></div>
       </div>
+      <Modal
+        title='Edit Profile'
+        open={isModalOpen}
+        onOk={handleOk}
+        onCancel={handleCancel}
+        footer={false}
+      >
+        <ProfileForm />
+      </Modal>
     </div>
   );
 };

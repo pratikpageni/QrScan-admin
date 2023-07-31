@@ -29,6 +29,7 @@ const Information = () => {
             </p>
           </div>
         </div>
+        <div></div>
       </div>
     </>
   );
