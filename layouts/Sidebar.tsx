@@ -6,7 +6,7 @@ import React from 'react';
 const Sidebar = () => {
   const router = useRouter();
   return (
-    <div className='shadow-md fixed bg-white z-50 px-5 min-h-screen'>
+    <div className='shadow-md fixed bg-white z-[9999] px-5 min-h-screen'>
       <div className='px-8 py-8'>
         <h1 className='text-3xl'>Loreamsear</h1>
       </div>
