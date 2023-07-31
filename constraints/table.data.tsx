@@ -1,9 +1,9 @@
-import { Space, Tooltip } from 'antd';
+import PrintQr from '@/components/table/PrintQr';
+import { Modal, Space, Tooltip } from 'antd';
 import { useState } from 'react';
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 import { FcPrint } from 'react-icons/fc';
-
-// const [model, setModel] = useState(false);
+import ReactToPrint from 'react-to-print';
 
 const tablecolumns = [
   {
@@ -35,9 +35,7 @@ const tablecolumns = [
           <AiFillDelete className='text-red-500 hover:text-red-600' size={22} />
         </button>
         <Tooltip placement='top' title='Print QR'>
-          <button>
-            <FcPrint size={22} />
-          </button>
+          <ModalButton />
         </Tooltip>
       </Space>
     ),
@@ -52,3 +50,50 @@ const tabledataSource = [
 ];
 
 export default { tabledataSource, tablecolumns };
+
+const ModalButton = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModel = () => {
+    setIsModalOpen(false);
+  };
+  return (
+    <div>
+      <button onClick={showModal}>
+        <FcPrint size={22} />
+      </button>
+      <Modal
+        open={isModalOpen}
+        onCancel={closeModel}
+        footer={[
+          <>
+            <PrintButton />
+          </>,
+        ]}
+        // footer={[
+        //  <>
+        //  </>
+
+        // ]}
+      >
+        <PrintQr />
+      </Modal>
+    </div>
+  );
+};
+
+const PrintButton = () => {
+  return (
+    <div>
+      <button
+        onClick={() => window.print()}
+        className='text-white bg-brandcolor font-bold'
+      >
+        Print
+      </button>
+    </div>
+  );
+};

@@ -7,11 +7,7 @@ import AddItemCard from '@/components/managebill/AddItemCard';
 
 const managebill = () => {
   return (
-    <MainLayout
-      title='Billing'
-      NavDescription='Generate bill for any table.'
-      NavbarTitle='Billing'
-    >
+    <div>
       <Breadcrumb
         className='mb-2 -mt-2'
         items={[
@@ -111,7 +107,7 @@ const managebill = () => {
           </div>
         </div>
       </div>
-    </MainLayout>
+    </div>
   );
 };
 

@@ -6,15 +6,15 @@ import React from 'react';
 interface LayoutProps {
   title?: string;
   children: React.ReactNode;
-  NavbarTitle: string;
-  NavDescription: string;
+  navbarTitle: string;
+  navDescription: string;
 }
 
 const MainLayout = ({
   title,
   children,
-  NavDescription,
-  NavbarTitle,
+  navDescription,
+  navbarTitle,
 }: LayoutProps) => {
   return (
     <>
@@ -36,7 +36,7 @@ const MainLayout = ({
       </Head>
       <main className='font-saira'>
         <Sidebar />
-        <Navbar NavDescription={NavDescription} NavbarTitle={NavbarTitle} />
+        <Navbar NavDescription={navDescription} NavbarTitle={navbarTitle} />
         <div className='pl-[18rem] pt-[7rem] px-8 py-80 bg-gray-100  '>
           {children}
         </div>

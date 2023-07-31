@@ -8,6 +8,7 @@ interface NavbarInterface {
   title: string;
   logo: React.ReactNode;
   link: string;
+  childlink?: string[];
 }
 
 const navbar: NavbarInterface[] = [
@@ -25,6 +26,7 @@ const navbar: NavbarInterface[] = [
     title: 'Billing',
     link: '/billing',
     logo: <MdAttachMoney size={24} />,
+    childlink: ['/billing/managebill'],
   },
   {
     title: 'Menu',

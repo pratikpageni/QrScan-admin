@@ -15,8 +15,8 @@ const Sidebar = () => {
           return (
             <Link
               href={`${data.link}`}
-              className={`flex p-3  ${
-                router.asPath == data?.link
+              className={`flex p-3 ${
+                router.asPath.split('/')[1] === data?.link.split('/')[1]
                   ? 'bg-brandcolor text-white'
                   : 'text-brandcolor'
               } rounded-2xl gap-x-3 items-center `}

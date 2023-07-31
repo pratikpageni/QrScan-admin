@@ -4,16 +4,10 @@ import { IoFastFood } from 'react-icons/io5';
 import { GiReceiveMoney } from 'react-icons/gi';
 import Link from 'next/link';
 import ActivetableCard from '@/components/dashboard/ActivetableCard';
+import { GetServerSideProps } from 'next';
 
 export default function Home() {
-  return (
-    <MainLayout
-      NavbarTitle='Dashboard'
-      NavDescription='Welcome to Restro Admin, Pratik !'
-    >
-      <Dashboard />
-    </MainLayout>
-  );
+  return <Dashboard />;
 }
 
 const Dashboard = () => {
@@ -44,4 +38,13 @@ const Dashboard = () => {
       </div>
     </div>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  return {
+    props: {
+      navbarTitle: 'Dashboard',
+      navDescription: 'Welcome to Restro Admin, Pratik !',
+    },
+  };
 };
