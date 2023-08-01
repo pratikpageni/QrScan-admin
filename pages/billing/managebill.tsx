@@ -1,4 +1,3 @@
-import MainLayout from '@/layouts/MainLayout';
 import React from 'react';
 import { Breadcrumb } from 'antd';
 import Link from 'next/link';
@@ -62,7 +61,7 @@ const managebill = () => {
                 </div>
               );
             })}
-            <div className='flex gap-x-3 text-sm items-center'>
+            <div key={index} className='flex gap-x-3 text-sm items-center'>
               <input
                 type='text'
                 placeholder='Item Name'

@@ -1,5 +1,4 @@
 import Infocard from '@/components/dashboard/Infocard';
-import MainLayout from '@/layouts/MainLayout';
 import { IoFastFood } from 'react-icons/io5';
 import { GiReceiveMoney } from 'react-icons/gi';
 import Link from 'next/link';
@@ -40,7 +39,7 @@ const Dashboard = () => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
+export const getServerSideProps: GetServerSideProps = async () => {
   return {
     props: {
       navbarTitle: 'Dashboard',

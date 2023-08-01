@@ -1,4 +1,3 @@
-import MainLayout from '@/layouts/MainLayout';
 import { Input, Select, Space, Table, Tag, Tooltip } from 'antd';
 import React, { useState } from 'react';
 import { TbLayoutGridAdd } from 'react-icons/tb';

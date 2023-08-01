@@ -1,5 +1,4 @@
 import RecentOrderCard from '@/components/orders/RecentOrderCard';
-import MainLayout from '@/layouts/MainLayout';
 import { GetServerSideProps } from 'next';
 import React from 'react';
 

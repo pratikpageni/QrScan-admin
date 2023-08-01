@@ -1,5 +1,3 @@
-import MainLayout from '@/layouts/MainLayout';
-
 import React from 'react';
 import { GoDotFill } from 'react-icons/go';
 import { BiDollar } from 'react-icons/bi';
@@ -12,6 +10,7 @@ const billing = () => {
       {[0, 0, 0, 0, 0, 0].map((data, index) => {
         return (
           <Link
+            key={index}
             href={'/billing/managebill'}
             className='p-3 rounded-md bg-white group  hover:bg-brandcolor  hover:text-white'
           >

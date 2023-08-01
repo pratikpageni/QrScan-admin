@@ -1,7 +1,5 @@
-import MainLayout from '@/layouts/MainLayout';
-import { Input, Select, Space, Table, Tag } from 'antd';
+import { Input, Select, Table } from 'antd';
 import React, { useState } from 'react';
-import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 
 import menuData from '@/constraints/menu.data';
 import { BsBuildingAdd } from 'react-icons/bs';

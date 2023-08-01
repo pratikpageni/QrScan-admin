@@ -1,4 +1,4 @@
-import { Space } from 'antd';
+import { Checkbox, Space } from 'antd';
 import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 
 const menucolumns = [

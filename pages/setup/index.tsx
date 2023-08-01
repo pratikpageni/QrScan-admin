@@ -1,6 +1,5 @@
 import Banner from '@/components/setup/Banner';
 import Information from '@/components/setup/Information';
-import MainLayout from '@/layouts/MainLayout';
 import { GetServerSideProps } from 'next';
 import React from 'react';
 

@@ -1,6 +1,6 @@
-import { Button, QRCode } from 'antd';
-import React, { useRef } from 'react';
-import ReactToPrint from 'react-to-print';
+import { QRCode } from 'antd';
+import React from 'react';
+// import ReactToPrint from 'react-to-print';
 
 const PrintQr = () => {
   return (
