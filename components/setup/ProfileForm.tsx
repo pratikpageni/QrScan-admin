@@ -18,7 +18,7 @@ const ProfileForm = () => {
   } = useForm<FormValues>();
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    console.log(data);
+    // console.log(data);
   };
   return (
     <div>

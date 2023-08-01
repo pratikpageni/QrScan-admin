@@ -39,7 +39,7 @@ const Dashboard = () => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
   return {
     props: {
       navbarTitle: 'Dashboard',

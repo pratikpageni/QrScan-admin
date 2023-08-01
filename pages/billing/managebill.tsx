@@ -61,7 +61,7 @@ const managebill = () => {
                 </div>
               );
             })}
-            <div key={index} className='flex gap-x-3 text-sm items-center'>
+            <div className='flex gap-x-3 text-sm items-center'>
               <input
                 type='text'
                 placeholder='Item Name'

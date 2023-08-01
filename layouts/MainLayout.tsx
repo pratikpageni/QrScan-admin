@@ -34,7 +34,7 @@ const MainLayout = ({
           rel='stylesheet'
         />
       </Head>
-      <main className='font-saira z-[999999999]'>
+      <main className='font-saira'>
         <Sidebar />
         <Navbar NavDescription={navDescription} NavbarTitle={navbarTitle} />
         <div className='pl-[18rem] pt-[7rem] px-8 py-80 bg-gray-100  '>

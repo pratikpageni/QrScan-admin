@@ -13,7 +13,7 @@ const menu = () => {
   // const onSearch = (value: string) => {
   //   console.log('search:', value);
   // };
-  const [searchtext, setsearchtext] = useState();
+  // const [searchtext, setsearchtext] = useState();
   return (
     <>
       <Input.Search
