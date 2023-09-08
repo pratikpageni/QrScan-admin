@@ -9,8 +9,10 @@ const Api = axios.create({
 const asyncGet = async (uri: string, option?: AxiosRequestConfig) => {
   try {
     const { data } = await Api.get(uri.replace(/\/+/g, '/'), option);
-    return data;
+    // console.log(data);
+    return { data };
   } catch (e) {
+    console.log(e);
     return { error: e };
   }
 };
