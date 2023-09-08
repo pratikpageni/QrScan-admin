@@ -1,138 +1,85 @@
-import { message } from 'antd';
-import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
-import useRedirect from './redirect';
-const url: string = '';
-interface ResponseInteface {
-  data: any;
-  status: boolean;
-  message: string;
-}
-interface ApiResponse {
-  data?: any;
-  error?: any;
-}
+import axios, { AxiosRequestConfig } from 'axios';
 
-class HttpClient {
-  async get(url: string, options?: AxiosRequestConfig): Promise<any> {
-    const request = async () =>
-      await this.axios().get<ApiResponse>(url, options);
-    try {
-      const { data } = await request();
-      return { data };
-    } catch (e: any) {
-      return { error: e?.response?.data };
-    }
+const Api = axios.create({
+  baseURL: 'http://localhost:5000/v1',
+  timeout: 1000,
+  //   headers: { 'X-Custom-Header': 'foobar' },
+});
+
+const asyncGet = async (uri: string, option?: AxiosRequestConfig) => {
+  try {
+    const { data } = await Api.get(uri.replace(/\/+/g, '/'), option);
+    return data;
+  } catch (e) {
+    return { error: e };
   }
-
-  async post(
-    url: string,
-    payload?: any,
-    options?: AxiosRequestConfig
-  ): Promise<any> {
-    try {
-      const { data } = await this.axios().post<ApiResponse>(
-        url,
-        payload,
-        options
-      );
-
-      return { data };
-    } catch (e: any) {
-      return { error: e.response?.data ? e.response.data : e.response };
-    }
-  }
-
-  async put(
-    url: string,
-    payload?: any,
-    options?: AxiosRequestConfig
-  ): Promise<any> {
-    try {
-      const { data } = await this.axios().put<ApiResponse>(
-        url,
-        payload,
-        options
-      );
-      return { data };
-    } catch (e: any) {
-      return { error: e.response?.data ? e.response.data : e.response };
-    }
-  }
-
-  async delete<T>(url: string, options?: AxiosRequestConfig): Promise<any> {
-    try {
-      const { data } = await this.axios().delete<T>(url, options);
-      return { data };
-    } catch (e: any) {
-      return { error: e.response?.data ? e.response.data : e.response };
-    }
-  }
-
-  axios() {
-    const request = axios.create({
-      // baseURL: "",
-      baseURL: process.env.sourceApi,
-    });
-
-    request.interceptors.request.use(
-      function (config) {
-        return config;
-      },
-      function (error) {
-        return Promise.reject(error);
-      }
-    );
-
-    request.interceptors.response.use(
-      function (response) {
-        console.log(response);
-        if (response?.status == 401) {
-          message.success('session expired');
-          window.location.href = '/';
-        }
-        return response;
-      },
-      function (error) {
-        console.log(error.response);
-        if (error?.response?.status == 401 && error?.config?.url !== 'login') {
-          message.success('session expired');
-          // window.location.href = '/'
-        }
-        return Promise.reject(error);
-      }
-    );
-
-    return request;
-  }
-}
-
-const httpClient = (): HttpClient => {
-  return new HttpClient();
 };
-const httpOnly = (): AxiosInstance => {
-  const plainAxios: AxiosInstance = axios.create({
-    // baseURL: "http://localhost:2200/",
-    baseURL: process.env.sourceApi,
-    timeout: 1000,
-  });
-  plainAxios.interceptors.request.use(
-    (res) => {
-      return res;
-    },
-    (err) => {
-      return err;
-    }
-  );
-  plainAxios.interceptors.response.use(
-    (res) => {
-      return res;
-    },
-    (err) => {
-      return err;
-    }
-  );
-
-  return plainAxios;
+const asyncPost = async (
+  uri: string,
+  payload?: any,
+  option?: AxiosRequestConfig
+) => {
+  try {
+    const { data } = await Api.post(uri.replace(/\/+/g, '/'), payload, option);
+    return { data };
+  } catch (e) {
+    return { error: e };
+  }
 };
+const asyncPut = async (
+  uri: string,
+  payload?: any,
+  option?: AxiosRequestConfig
+) => {
+  try {
+    const { data } = await Api.put(uri.replace(/\/+/g, '/'), payload, option);
+    return { data };
+  } catch (e) {
+    return { error: e };
+  }
+};
+const asyncPatch = async (
+  uri: string,
+  payload?: any,
+  option?: AxiosRequestConfig
+) => {
+  try {
+    const { data } = await Api.patch(uri.replace(/\/+/g, '/'), payload, option);
+    return { data };
+  } catch (e) {
+    return { error: e };
+  }
+};
+const asyncDelete = async (uri: string, option?: AxiosRequestConfig) => {
+  try {
+    const data = await Api.delete(uri.replace(/\/+/g, '/'), option);
+    return { data };
+  } catch (e) {
+    return { error: e };
+  }
+};
+//request  interceptor
+Api.interceptors.request.use(
+  async function (config) {
+    // const token = await getToken();
+    // config.headers.Authorization = token;
+    return config;
+  },
+  function (error) {
+    return Promise.reject(error);
+  }
+);
 
-export { httpOnly, httpClient };
+//  response interceptor
+Api.interceptors.response.use(
+  function (response) {
+    return response;
+  },
+  function (error) {
+    return Promise.reject(
+      error?.response ? error?.response?.data : error.response
+    );
+  }
+);
+
+export { asyncGet, asyncPost, asyncDelete, asyncPatch, asyncPut };

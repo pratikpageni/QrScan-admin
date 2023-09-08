@@ -1,19 +1,33 @@
-import { Input, Select, Table } from 'antd';
-import React, { useState } from 'react';
+import { Form, Input, Select, Table } from 'antd';
+import React, { useState, useEffect } from 'react';
 
 import menuData from '@/constraints/menu.data';
 import { BsBuildingAdd } from 'react-icons/bs';
 import { GetServerSideProps } from 'next';
+import { asyncGet, asyncPost } from '@/apis/rest.api';
+import { itemApi } from '@/apis/list.api';
 
 const menu = () => {
-  // const onChange = (value: string) => {
-  //   console.log(`selected ${value}`);
-  // };
+  const [items, setItems] = useState([]);
+  const onFinish = (value: any) => {
+    asyncPost(itemApi.post, value)
+      .then(() => {
+        alert('success');
+        getAllItem();
+      })
+      .catch(() => {
+        alert('error');
+      });
+  };
 
-  // const onSearch = (value: string) => {
-  //   console.log('search:', value);
-  // };
-  // const [searchtext, setsearchtext] = useState();
+  const getAllItem = () => {
+    asyncGet(itemApi.get).then((data) => {
+      setItems(data);
+    });
+  };
+  useEffect(() => {
+    getAllItem();
+  }, []);
   return (
     <>
       <Input.Search
@@ -28,29 +42,29 @@ const menu = () => {
           <Table
             className='bg-white rounded-lg'
             columns={menuData.menucolumns}
-            dataSource={menuData.menudataSource}
+            dataSource={items}
           ></Table>
         </div>
-        <div className='w-[30%] bg-white p-2 pt-4 rounded-lg  '>
+        <Form
+          onFinish={onFinish}
+          className='w-[30%] bg-white p-2 pt-4 rounded-lg  '
+        >
           <h1 className='font-bold text-center border-b border-dashed pb-4'>
             Add Menu
           </h1>
           <div className='p-4 grid grid-cols-1 gap-y-4'>
             <div>
               <p>Name</p>
-              <input
-                type='text'
-                placeholder='Name'
-                className='px-2 py-1 border w-full'
-              />
+
+              <Form.Item name={'name'}>
+                <Input type='text' />
+              </Form.Item>
             </div>
             <div>
               <p>Price</p>
-              <input
-                type='number'
-                placeholder='Price'
-                className='px-2 py-1 border w-full'
-              />
+              <Form.Item name={'price'}>
+                <Input type='number' />
+              </Form.Item>
             </div>
             <div>
               <p>Category</p>
@@ -92,7 +106,7 @@ const menu = () => {
               </button>
             </div>
           </div>
-        </div>
+        </Form>
       </div>
     </>
   );

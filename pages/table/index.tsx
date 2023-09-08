@@ -1,9 +1,11 @@
-import { Input, Table,  Tooltip } from 'antd';
-import React, { useState } from 'react';
+import { Form, Input, Table, Tooltip } from 'antd';
+import React, { useEffect, useState } from 'react';
 import { TbLayoutGridAdd } from 'react-icons/tb';
 import tableData from '@/constraints/table.data';
 import { useForm } from 'react-hook-form';
 import { GetServerSideProps } from 'next';
+import { tableApi } from '@/apis/list.api';
+import { asyncGet, asyncPost } from '@/apis/rest.api';
 
 interface TableDataInterface {
   name: string;
@@ -11,14 +13,26 @@ interface TableDataInterface {
 }
 
 const table = () => {
-  // const onChange = (value: string) => {
-  //   console.log(`selected ${value}`);
-  // };
+  const [table, setTable] = useState([]);
+  const onFinish = (value: any) => {
+    asyncPost(tableApi.post, value)
+      .then(() => {
+        alert('sucess');
+        getAllTable();
+      })
+      .catch(() => {
+        alert('error');
+      });
+  };
 
-  // const onSearch = (value: string) => {
-  //   console.log('search:', value);
-  // };
-
+  const getAllTable = () => {
+    asyncGet(tableApi.get).then((data) => {
+      setTable(data);
+    });
+  };
+  useEffect(() => {
+    getAllTable();
+  }, []);
   const {
     register,
     reset,
@@ -67,12 +81,12 @@ const table = () => {
           <Table
             className='bg-white rounded-lg'
             columns={tableData.tablecolumns}
-            dataSource={tableData.tabledataSource}
+            dataSource={table}
           ></Table>
         </div>
-        <form
+        <Form
           // onSubmit={handlesubmit(handleSubmit)}
-          onSubmit={handleSubmit(submit)}
+          onFinish={onFinish}
           className='w-[30%] bg-white p-2 pt-4 rounded-lg  '
         >
           <h1 className='font-bold text-center border-b border-dashed pb-4'>
@@ -81,18 +95,24 @@ const table = () => {
           <div className='p-4 grid grid-cols-1 gap-y-4'>
             <div>
               <p>Name</p>
-              <input
+              <Form.Item name={'name'}>
+                <Input type='text' placeholder='Table Name' />
+              </Form.Item>
+              {/* <input
                 {...register('name', {
                   required: { value: true, message: 'name is required' },
                 })}
                 type='text'
                 placeholder='Name'
                 className='px-2 py-1 border w-full'
-              />
+              /> */}
             </div>
             <div>
               <p>Section</p>
-              <input
+              <Form.Item name={'section'}>
+                <Input type='text' placeholder='Section' />
+              </Form.Item>
+              {/* <input
                 {...register('section', {
                   required: { value: true, message: 'section is required' },
                 })}
@@ -100,7 +120,7 @@ const table = () => {
                 // showSearch
                 placeholder='Select a Section'
               />
-              {errors?.name && errors.name.message}
+              {errors?.name && errors.name.message} */}
             </div>
             <div className='flex justify-center'>
               <button
@@ -112,7 +132,7 @@ const table = () => {
               </button>
             </div>
           </div>
-        </form>
+        </Form>
       </div>
     </>
   );
