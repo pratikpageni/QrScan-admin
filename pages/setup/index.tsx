@@ -1,15 +1,9 @@
-import Banner from '@/components/setup/Banner';
-import Information from '@/components/setup/Information';
+import Setup from '@/components/setup/Setup';
 import { GetServerSideProps } from 'next';
 import React from 'react';
 
 const setup = () => {
-  return (
-    <>
-      <Banner />
-      <Information />
-    </>
-  );
+  return <Setup />;
 };
 
 export default setup;

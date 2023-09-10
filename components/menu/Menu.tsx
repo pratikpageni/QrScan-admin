@@ -11,13 +11,7 @@ const Menu = () => {
   }, []);
   return (
     <div>
-      <Input.Search
-        placeholder='Search here'
-        className='p-2 mb-5 w-60'
-        // onSearch={(value) => {
-        //   setsearchtext(value);
-        // }}
-      />
+      <Input.Search placeholder='Search here' className='p-2 mb-5 w-60' />
       <div className='flex gap-x-5'>
         <div className='w-[70%]'>
           <Table />

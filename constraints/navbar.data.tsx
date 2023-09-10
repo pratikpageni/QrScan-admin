@@ -43,6 +43,11 @@ const navbar: NavbarInterface[] = [
     link: '/setup',
     logo: <AiFillSetting size={22} />,
   },
+  {
+    title: 'Inventory',
+    link: '/inventory',
+    logo: <AiFillSetting size={22} />,
+  },
 ];
 
 export default navbar;
