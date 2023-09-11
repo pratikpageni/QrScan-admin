@@ -4,6 +4,7 @@ import { MdAttachMoney } from 'react-icons/md';
 import { SlNotebook } from 'react-icons/sl';
 import { GiSofa } from 'react-icons/gi';
 import { AiFillSetting } from 'react-icons/ai';
+import { FaStore } from 'react-icons/fa6';
 interface NavbarInterface {
   title: string;
   logo: React.ReactNode;
@@ -46,7 +47,7 @@ const navbar: NavbarInterface[] = [
   {
     title: 'Inventory',
     link: '/inventory',
-    logo: <AiFillSetting size={22} />,
+    logo: <FaStore size={22} />,
   },
 ];
 
