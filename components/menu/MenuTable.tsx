@@ -1,8 +1,14 @@
 import { Space, Table } from 'antd';
-import React from 'react';
-import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
+import React, { useState } from 'react';
+import {
+  AiFillDelete,
+  AiFillEdit,
+  AiFillEye,
+  AiFillEyeInvisible,
+} from 'react-icons/ai';
 
 export const MenuTable = ({ data }: { data: any }) => {
+  const [enable, setEnable] = useState(true);
   const menucolumns = [
     {
       title: 'Name',
@@ -40,6 +46,18 @@ export const MenuTable = ({ data }: { data: any }) => {
               className='text-red-500 hover:text-red-600'
               size={22}
             />
+          </button>
+          <button
+            onClick={() => setEnable(false)}
+            className={`${enable ? '' : 'hidden'}`}
+          >
+            <AiFillEye size={22} />
+          </button>
+          <button
+            onClick={() => setEnable(true)}
+            className={`${enable ? 'hidden' : ''}`}
+          >
+            <AiFillEyeInvisible size={22} />
           </button>
         </Space>
       ),
