@@ -1,6 +1,7 @@
 import { Tabs } from 'antd'
 import React from 'react'
 import Information from '../setup/Information'
+import OrderNow from './HighlightDetails'
 
 export default function DetailsTab() {
   return (
@@ -11,7 +12,7 @@ export default function DetailsTab() {
       {
         label: 'About Us',
         key: '1',
-        children:<Information/>
+        children:<AboutUs/>
       },
       {
         label: 'Menu',
@@ -34,10 +35,12 @@ export default function DetailsTab() {
   )
 }
 
-const  Menu = ()=>{
+const  AboutUs = ()=>{
 return(
-  <div>
-    
+  <div className='flex gap-4'>
+    <div className="">
+    <Information/>
+    </div>
   </div>
 )
 }
