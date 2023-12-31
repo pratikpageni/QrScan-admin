@@ -4,12 +4,13 @@ import { FiEdit2 } from 'react-icons/fi';
 import { FaLocationDot } from 'react-icons/fa6';
 import { IoMdContact } from 'react-icons/io';
 import ProfileForm from './ProfileForm';
+import ShareButton from '../utils/ShareButton';
 
 interface layoutProps{
-  Enable:boolean;
+  Enable:'EditButon'|'ShareButton';
 }
 
-const Banner = (Enable:layoutProps) => {
+const Banner = (props:layoutProps) => {
   
   return (
     <div>
@@ -46,7 +47,7 @@ const Banner = (Enable:layoutProps) => {
             </div>
           </div>
           <div>
-            {Enable && <EditButton/> };
+          {props.Enable == "EditButon" ? <EditButton /> : <ShareButton/>}
           </div>
         </div>
       </div>
@@ -90,5 +91,6 @@ const EditButton=()=>{
     </div>
   )
 }
+
 
 export default Banner;

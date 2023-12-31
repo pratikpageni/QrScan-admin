@@ -7,7 +7,7 @@ import React from 'react';
 export default function index() {
   return (
     <div>
-      <Banner Enable={false} />
+      <Banner Enable="ShareButton" />
       <div className='mt-5'>
         <HighlightDetails />
       </div>
