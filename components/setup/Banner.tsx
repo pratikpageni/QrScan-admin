@@ -5,20 +5,12 @@ import { FaLocationDot } from 'react-icons/fa6';
 import { IoMdContact } from 'react-icons/io';
 import ProfileForm from './ProfileForm';
 
-const Banner = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+interface layoutProps{
+  Enable:boolean;
+}
 
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+const Banner = (Enable:layoutProps) => {
+  
   return (
     <div>
       <img
@@ -53,7 +45,32 @@ const Banner = () => {
               </div>
             </div>
           </div>
-          <Tooltip title='Edit Your Profile'>
+          <div>
+            {Enable && <EditButton/> };
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const EditButton=()=>{
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+  return(
+    <div>
+      <Tooltip title='Edit Your Profile'>
             <button
               onClick={showModal}
               className='bg-brandcolor hover:opacity-70 text-white w-12 h-12 rounded-full flex justify-center items-center self-end'
@@ -61,20 +78,17 @@ const Banner = () => {
               <FiEdit2 size={25} />
             </button>
           </Tooltip>
-        </div>
-        <div className='mt-3'></div>
-      </div>
-      <Modal
-        title='Edit Profile'
-        open={isModalOpen}
-        onOk={handleOk}
-        onCancel={handleCancel}
-        footer={false}
-      >
-        <ProfileForm />
-      </Modal>
+              <Modal
+            title='Edit Profile'
+            open={isModalOpen}
+            onOk={handleOk}
+            onCancel={handleCancel}
+            footer={false}
+          >
+            <ProfileForm />
+          </Modal>
     </div>
-  );
-};
+  )
+}
 
 export default Banner;

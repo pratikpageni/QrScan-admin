@@ -1,5 +1,7 @@
 import React from 'react';
 
+
+
 const Information = () => {
   return (
     <>
@@ -18,7 +20,7 @@ const Information = () => {
             blanditiis officiis assumenda.
           </p>
         </div>
-        <div className='bg-white rounded-md p-5'>
+        {/* <div className='bg-white rounded-md p-5'>
           <div>
             <h4 className='font-bold text-2xl'>WiFi Information</h4>
             <p className='font-bold'>
@@ -28,7 +30,7 @@ const Information = () => {
               Password:<span className='font-normal'>Password</span>
             </p>
           </div>
-        </div>
+        </div> */}
         <div></div>
       </div>
     </>
